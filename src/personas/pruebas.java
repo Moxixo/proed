@@ -1,5 +1,7 @@
 package personas;
 
+import static personas.Paciente.*;
+
 /**
  *
  * @author s3ira
@@ -18,11 +20,11 @@ public class pruebas {
         // Crear el paciente con el constructor proporcionado
         Paciente paciente = new Paciente(dni, nombre, apellido);
         
-        paciente.addConstantes();
+        registrarPaciente(paciente);
         
         //paciente.modificarConstantes();
         
-        //paciente.mostrarConstantes();
+        paciente.mostrarConstantes();
         
         paciente.actualizarEstadoPaciente();
         
