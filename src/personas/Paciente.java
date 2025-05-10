@@ -21,8 +21,8 @@ public class Paciente extends Persona{
     protected float temperatura;
     Scanner sc = new Scanner(System.in);
     
-    public Paciente(String dni, String nombre, String apellido, LocalDate fechaNacimiento) {
-        super(dni, nombre, apellido, fechaNacimiento);
+    public Paciente(String dni, String nombre, String apellido) {
+        super(dni, nombre, apellido);
     }
     
     /**
