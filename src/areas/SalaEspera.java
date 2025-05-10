@@ -2,17 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package personas;
-
-import areas.Area;
+package areas;
 
 /**
  *
- * @author Sheila R.
+ * @author s3ira
  */
-public class Medico {
-    protected Area area;
-    protected String especialidad;
-    
+public class SalaEspera {
     
 }
