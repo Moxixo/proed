@@ -142,8 +142,8 @@ public class Paciente extends Persona{
             System.out.println("El paciente está bajo vigilancia dada la gravedad de su caso.");
         }else if(estado.equalsIgnoreCase("pendiente")){
             System.out.println(estado);
-            System.out.println("El paciente está pendiente de traslado a otra unidad. "
-                    + "Para comprobar el estado de la solicitud de traslado, contacte con la unidad correspondiente.");
+            System.out.println("El paciente está pendiente de traslado a otra unidad. ");
+            System.out.println("Para comprobar el estado de la solicitud de traslado, contacte con la unidad correspondiente.");
         }   
         System.out.println("=========================================");
         
