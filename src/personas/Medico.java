@@ -6,7 +6,7 @@ package personas;
 
 /**
  *
- * @author aelit
+ * @author Sheila R.
  */
 public class Medico {
     
