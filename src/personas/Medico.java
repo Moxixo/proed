@@ -14,5 +14,5 @@ public class Medico {
     protected Area area;
     protected String especialidad;
     
-    //pato
+    //patou
 }
