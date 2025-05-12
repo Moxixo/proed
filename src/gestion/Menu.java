@@ -10,61 +10,77 @@ public class Menu {
         System.out.format("""
                           \n
                           *******************************
-                          *     SELECIONA QUE HACER     *
+                          *      ¿QUE DESEAS HACER?     *
                           *******************************
-                          *   1-Administrar paciente    *
-                          *   2-Ver disponibilidad...   *
+                          *   1-Ingresar paciente       *
+                          *   2-Actualizar paciente     *
+                          *   3-Ver estado              *
+                          *                             *
+                          *   0-Salir                   *
                           *******************************
                           \n
                           """);
     }
     
-    public void administrarPacientes(){
+    public void ingresarPacientes(){
         System.out.format("""
                           \n
                           *********************************
-                          *     SELECCIONA QUE HACER      *
+                          *      ¿QUE DESEAS HACER?       *
                           *********************************
-                          *   1-Ingresar paciente         *
-                          *   2-Modificar informe         *
-                          *   3-Redirigir a otra Unidad   *
-                          *   4-Hospitalizar paciente     *
-                          *   5-Dar Alta                  *
+                          *   1-Triaje/Urgencias          *
+                          *   2-Trasladar area            *
+                          *                               *
                           *   0-Volver                    *
                           *********************************
                           \n
                           """);
     }
     
-    public void verDisponibilidad(){
+    public void verEstado(){
         System.out.format("""
                           \n
-                          En este menÃº podrÃ¡s ver la disponibilidad de los equipos, 
-                          personal, etc de las diferentes Ã¡reas.
-                          
+                          ******************************
+                          *      ¿QUE DESEAS VER?      *
+                          ******************************
+                          *   1-Disponibilidad camas   *
+                          *   2-Equipos médicos        *
+                          *   3-Personal               *
+                          *                            *
+                          *   0-Volver                 *
+                          ******************************
+                          \n
+                          """);
+    }
+    
+    public void verLugar(){
+        System.out.format("""
+                          \n
                           ************************
-                          *  SELECIONA UN AREA   *
+                          *    ¿DE QUE LUGAR?    *
                           ************************
-                          *   1-Sala de espera   *
+                          *   1-UCI              *
                           *   2-Urgencias        *
-                          *   3-Otras plantas    *
+                          *   3-Plantas          *
+                          *                      *
                           *   0-Volver           *
                           ************************
                           \n
                           """);
     }
     
-    public void disponibilidadPlantas(){
+    public void actualizarPaciente(){
         System.out.format("""
                           \n
-                          ************************
-                          *  SELECIONA UN AREA   *
-                          ************************
-                          *   1-UCI              *
-                          *   2-Urgencias        *
-                          *   3-Plantas          *
-                          *   0-Volver           *
-                          ************************
+                          *******************************
+                          *      ¿QUE DESEAS HACER?     *
+                          *******************************
+                          *   1-Trasladar paciente      *
+                          *   2-Actualizar historial    *
+                          *   3-Actualizar informe      *
+                          *                             *
+                          *   0-Salir                   *
+                          *******************************
                           \n
                           """);
     }
