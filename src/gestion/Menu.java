@@ -2,7 +2,7 @@ package gestion;
 
 /**
  *
- * @author aelit
+ * @author Marta Lou
  */
 public class Menu {
     

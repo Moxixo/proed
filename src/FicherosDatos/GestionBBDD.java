@@ -9,7 +9,7 @@ import java.io.IOException;
 
 /**
  *
- * @author aisuw
+ * @author Marta Lou
  */
 public class GestionBBDD {
     

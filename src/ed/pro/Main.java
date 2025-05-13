@@ -4,22 +4,18 @@
  */
 package ed.pro;
 
-import areas.Area;
-
 /**
  *
- * @author aelit
+ * @author 
  */
-public class EDPro {
+public class Main {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        Area urgencias = new Area(1,"Urgencias");
-        Area uci = new Area(2,"UCI");
-    
+        // TODO code application logic here
+        //controlar si el archivo ya tenia archivos o esta vacío.
     }
     
 }

@@ -12,7 +12,7 @@ import personas.Medico;
 
 /**
  *
- * @author aelit
+ * @author Marta Lou
  */
 public class Informe implements Serializable{
     

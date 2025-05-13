@@ -12,7 +12,7 @@ import personas.*;
 
 /**
  *
- * @author aisuw
+ * @author Marta Lou
  */
 public class BBDD {
     private static final String FICHERO_INFORME ="informe.txt";
@@ -42,28 +42,26 @@ public class BBDD {
         drASloan.setDni("0000M");
         drASloan.setNombre("Alexander");
         drASloan.setApellido("Sloan");
-        drASloan.setArea(urgencias);
         drASloan.setEspecialidad("Urgencias");
         
         Medico drZShepherd= new Medico();
         drZShepherd.setDni("0001M");
         drZShepherd.setNombre("Zola");
         drZShepherd.setApellido("Shepherd");
-        drZShepherd.setArea(boxVital);
         drZShepherd.setEspecialidad("Neurologia");
         
         Paciente alinaB= new Paciente();
         alinaB.setDni("1111A");
         alinaB.setNombre("Alina");
         alinaB.setApellido("Black");
-        alinaB.setIdHistorial("0AB");
+        alinaB.setHistorial("AB0");
         alinaB.setMedico(drZShepherd);
         
         Paciente jackL= new Paciente();
         jackL.setDni("2222B");
         jackL.setNombre("Jack");
         jackL.setApellido("Lupin");
-        jackL.setIdHistorial("0JL");
+        jackL.setHistorial("JL0");
         jackL.setMedico(drASloan);
     }
     
