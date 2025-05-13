@@ -13,7 +13,6 @@ public class Paciente extends Persona{
     //Atributos
     
     protected String historial;
-    protected int idPaciente;
     protected Medico medico;
     protected String codigo;
     protected String estado;
@@ -23,7 +22,7 @@ public class Paciente extends Persona{
     protected int frecuenciaCardiaca;
     protected int frecuenciaRespiratoria;
     protected float temperatura;
-    Scanner sc = new Scanner(System.in);
+    
     
     //Constructores
     
@@ -115,6 +114,8 @@ public class Paciente extends Persona{
      */
     public void modificarConstantes(){ 
         String constante;
+        Scanner sc = new Scanner(System.in);
+        
         System.out.println("Seleccione la constante que quiere modificar:");
         System.out.println("'ta' para tensión, 'so' para saturación, 'fc' para frecuencia cardiaca, 'fr' para frecuencia respiratoria, 'temp' para temperatura");
         constante = sc.nextLine();
@@ -216,6 +217,7 @@ public class Paciente extends Persona{
      */
     public String actualizarEstadoPaciente(){
         System.out.println("Indique el estado actual del paciente:");
+        Scanner sc = new Scanner(System.in);
         estado = sc.nextLine();
         while(!"estable".equalsIgnoreCase(estado) && !"grave".equalsIgnoreCase(estado) && !"pendiente".equalsIgnoreCase(estado)){
             System.out.println("Error. Introduzca una de las opciones válidas ('estable', 'grave' o 'pendiente'(para pte. de traslado)): ");
@@ -268,11 +270,11 @@ public class Paciente extends Persona{
             return false;
         }
         Paciente p = (Paciente) obj;
-        return this.idPaciente == p.idPaciente;
+        return this.dni.equals(p.dni);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idPaciente);
+        return Objects.hash(dni);
     }
 }
