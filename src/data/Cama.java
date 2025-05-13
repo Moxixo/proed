@@ -8,12 +8,24 @@ import personas.Paciente;
 
 /**
  *
- * @author Sheila R.
+ * @author Carlos D.HD
  */
 public class Cama {
+    
+    /*ATRIBUTOS*/
     protected Paciente paciente; //Paciente asignado a la cama
     protected boolean disponible;
 
+    /*CONSTRUCTORES*/
+    public Cama() {
+    }
+
+    public Cama(Paciente paciente, boolean disponible) {
+        this.paciente = paciente;
+        this.disponible = disponible;
+    }
+    
+    /*GETTERS Y SETTERS*/
     public Paciente getPaciente() {
         return paciente;
     }
@@ -26,9 +38,8 @@ public class Cama {
         return disponible;
     }
 
-    public void setDisponible(boolean libre) {
-        this.disponible = libre;
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
     }
-    
-    
+
 }
