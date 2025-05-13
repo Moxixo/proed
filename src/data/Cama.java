@@ -8,9 +8,27 @@ import personas.Paciente;
 
 /**
  *
- * @author aelit
+ * @author Sheila R.
  */
 public class Cama {
     protected Paciente paciente; //Paciente asignado a la cama
-    protected boolean libre;
+    protected boolean disponible;
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
+
+    public boolean getDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean libre) {
+        this.disponible = libre;
+    }
+    
+    
 }

@@ -1,11 +1,14 @@
 package personas;
 
+import areas.Area;
+
 /**
  *
  * @author Sheila R.
  */
 public class Medico extends Persona {
     private String especialidad;
+    protected Area area;
 
     public Medico(){
         
@@ -23,5 +26,14 @@ public class Medico extends Persona {
     public String getEspecialidad() {
         return especialidad;
     }
+
+    public Area getArea() {
+        return area;
+    }
+
+    public void setArea(Area area) {
+        this.area = area;
+    }
+    
     
 }

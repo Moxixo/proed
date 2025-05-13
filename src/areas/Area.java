@@ -7,6 +7,7 @@ package areas;
 import data.Cama;
 import java.util.ArrayList;
 import personas.Medico;
+import personas.Paciente;
 
 /**
  *
@@ -27,6 +28,10 @@ public class Area {
     Cama cama4 = new Cama();
     Cama cama5 = new Cama();
 
+    public Area(){
+        
+    }
+    
     public Area(int tipo, String nombre) {
 
         this.tipo = tipo;
@@ -67,7 +72,7 @@ public class Area {
         System.out.println("");
         for (Cama aux : camas) {
 
-            if (aux.getDisponible) {
+            if (aux.getDisponible()) {
                 System.out.println(aux);
             }
             System.out.println("===============================================");

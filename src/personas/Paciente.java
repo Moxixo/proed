@@ -255,6 +255,7 @@ public class Paciente extends Persona{
         
         
     }
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
