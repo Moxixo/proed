@@ -21,6 +21,7 @@ public class Area {
     protected String nombre;
     protected ArrayList<Cama> camas = new ArrayList<>();
     protected ArrayList<Medico> medicos = new ArrayList<>();
+    protected ArrayList<Paciente> pacientes = new ArrayList<>();
 
     Cama cama1 = new Cama();
     Cama cama2 = new Cama();
@@ -122,9 +123,18 @@ public class Area {
 
         if (!encontrado) {
 
-            System.out.println("EL PACIENTE NO ESTA EN NINGUNA CAMA DE ESTA AREA");
+            System.out.println("EL PACIENTE NO ESTA EN NINGUNA CAMA DE ESTE AREA");
         }
 
+    }
+    
+    public void aniadirMedico(Medico medico){
+    
+        medicos.add(medico);
+    }
+    
+    public void aniadirPaciente(Paciente paciente){
+        pacientes.add(paciente);
     }
 
 }

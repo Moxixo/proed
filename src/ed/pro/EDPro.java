@@ -4,6 +4,8 @@
  */
 package ed.pro;
 
+import areas.Area;
+
 /**
  *
  * @author aelit
@@ -14,7 +16,9 @@ public class EDPro {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        Area urgencias = new Area(1,"Urgencias");
+        Area uci = new Area(2,"UCI");
     
     }
     
