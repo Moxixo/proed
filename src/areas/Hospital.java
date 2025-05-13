@@ -13,22 +13,20 @@ import java.util.ArrayList;
 public class Hospital {
         
     ArrayList <Area> areas;
-    Area urgencias = new Area(1,"Urgencias");
-    Area uci = new Area(2,"UCI");
+    
     
     
     public Hospital(){
     
         areas = new ArrayList <Area>();
-        
-        areas.add(urgencias);
-        areas.add(uci);
+     
         
     
     }
     
     public void mapaHospital(){
     
+        
         for (Area a : areas){
         
             System.out.println("=================");
@@ -36,6 +34,18 @@ public class Hospital {
             System.out.println("=================");
         }
     
+    }
+    
+    public void aniadirArea(Area area){
+    
+        areas.add(area);
+        
+    }
+    
+    public ArrayList <Area> getAreas(){
+        
+        return areas;
+        
     }
      
 }
