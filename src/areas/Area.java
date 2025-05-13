@@ -23,25 +23,48 @@ public class Area {
     protected ArrayList<Medico> medicos = new ArrayList<>();
     protected ArrayList<Paciente> pacientes = new ArrayList<>();
 
-    Cama cama1 = new Cama();
-    Cama cama2 = new Cama();
-    Cama cama3 = new Cama();
-    Cama cama4 = new Cama();
-    Cama cama5 = new Cama();
-
     public Area(){
+        ArrayList<Medico> medicos = new ArrayList<>();
+        this.medicos=medicos;
+        ArrayList<Paciente> pacientes = new ArrayList<>();
+        this.pacientes=pacientes;
         
+        ArrayList<Cama> camas = new ArrayList<>();
+        this.camas=camas;
+        Cama cama1 = new Cama();//De momento tenemos un supuesto de 5 camas por area creada
+        Cama cama2 = new Cama();
+        Cama cama3 = new Cama();
+        Cama cama4 = new Cama();
+        Cama cama5 = new Cama();
+        camas.add(cama1);
+        camas.add(cama2);
+        camas.add(cama3);  
+        camas.add(cama4);
+        camas.add(cama5);
     }
     
     public Area(int tipo, String nombre) {
-
         this.tipo = tipo;
         this.nombre = nombre;
+        
+        ArrayList<Medico> medicos = new ArrayList<>();
+        this.medicos=medicos;
+        ArrayList<Paciente> pacientes = new ArrayList<>();
+        this.pacientes=pacientes;
+        
+        ArrayList<Cama> camas = new ArrayList<>();
+        this.camas=camas;
+        Cama cama1 = new Cama();//De momento tenemos un supuesto de 5 camas por area creada
+        Cama cama2 = new Cama();
+        Cama cama3 = new Cama();
+        Cama cama4 = new Cama();
+        Cama cama5 = new Cama();
         camas.add(cama1);
         camas.add(cama2);
-        camas.add(cama3); //De momento tenemos un supuesto de 5 camas por area creada 
+        camas.add(cama3);  
         camas.add(cama4);
         camas.add(cama5);
+        
     }
 
     public void verCamas() {
@@ -136,5 +159,38 @@ public class Area {
     public void aniadirPaciente(Paciente paciente){
         pacientes.add(paciente);
     }
+    
+    public void aniadirCama(Cama cama){
+        camas.add(cama);
+    }
 
+    public int getTipo() {
+        return tipo;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public ArrayList<Cama> getCamas() {
+        return camas;
+    }
+
+    public ArrayList<Medico> getMedicos() {
+        return medicos;
+    }
+
+    public ArrayList<Paciente> getPacientes() {
+        return pacientes;
+    }
+
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    
 }
