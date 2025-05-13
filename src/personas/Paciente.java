@@ -56,6 +56,14 @@ public class Paciente extends Persona{
         this.estado = estado;
     }
     
+    public String getIdHistorial(){
+        return idHistorial;
+    }
+    
+    public void setIdHistorial(String idHistorial){
+        this.idHistorial = idHistorial;
+    }
+    
     //Métodos
     
     /**
