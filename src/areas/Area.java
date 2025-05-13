@@ -16,4 +16,6 @@ public class Area {
     protected String nombre;
     protected Cama[] camas; //Placeholder, elegir coleccion conveniente
     protected Medico[] medicos; //Placeholder, elegir coleccion conveniente
+    
+    //ola weno dia
 }
