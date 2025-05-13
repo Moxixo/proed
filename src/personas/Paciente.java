@@ -1,5 +1,6 @@
 package personas;
 
+import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -9,6 +10,7 @@ import java.util.Scanner;
  */
 public class Paciente extends Persona{
     protected String idHistorial;
+    protected int idPaciente;
     protected Medico medico;
     protected String codigo;
     protected String estado;
@@ -251,5 +253,22 @@ public class Paciente extends Persona{
         }   
         System.out.println("=========================================");
         
+        
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Paciente p = (Paciente) obj;
+        return this.idPaciente == p.idPaciente;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idPaciente);
     }
 }
