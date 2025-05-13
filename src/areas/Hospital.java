@@ -17,11 +17,8 @@ public class Hospital {
     
     
     public Hospital(){
-    
-        areas = new ArrayList <Area>();
-     
-        
-    
+        ArrayList<Area> areas = new ArrayList <Area>();
+        this.areas=areas;
     }
     
     public void mapaHospital(){
