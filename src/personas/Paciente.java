@@ -9,6 +9,9 @@ import java.util.Scanner;
  * @author Sheila R.
  */
 public class Paciente extends Persona{
+    
+    //Atributos
+    
     protected String idHistorial;
     protected int idPaciente;
     protected Medico medico;
@@ -69,7 +72,7 @@ public class Paciente extends Persona{
     //Métodos
     
     /**
-     *Este método utiliza los métodos addConstantes y asignarCodigoColor para
+     * Este método utiliza los métodos addConstantes y asignarCodigoColor para
      * clasificar a cada paciente
      * 
      * @param paciente

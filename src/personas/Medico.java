@@ -10,6 +10,8 @@ public class Medico extends Persona {
     private String especialidad;
     protected Area area;
 
+    //Constructores
+    
     public Medico(){
         
     }
@@ -18,6 +20,8 @@ public class Medico extends Persona {
         super(dni, nombre, apellido);
         this.especialidad = especialidad;
     }
+    
+    //Getters y setters
     
     public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
