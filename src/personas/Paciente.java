@@ -12,7 +12,7 @@ public class Paciente extends Persona{
     
     //Atributos
     
-    protected String idHistorial;
+    protected String historial;
     protected int idPaciente;
     protected Medico medico;
     protected String codigo;
@@ -61,12 +61,12 @@ public class Paciente extends Persona{
         this.estado = estado;
     }
     
-    public String getIdHistorial(){
-        return idHistorial;
+    public String getHistorial(){
+        return historial;
     }
     
-    public void setIdHistorial(String idHistorial){
-        this.idHistorial = idHistorial;
+    public void setHistorial(String historial){
+        this.historial = historial;
     }
     
     //Métodos

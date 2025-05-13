@@ -7,7 +7,7 @@ import areas.Area;
  * @author Sheila R.
  */
 public class Medico extends Persona {
-    private String especialidad;
+    protected String especialidad;
     protected Area area;
 
     //Constructores

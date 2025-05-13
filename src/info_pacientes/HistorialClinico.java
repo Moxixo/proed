@@ -76,7 +76,7 @@ public class HistorialClinico implements Serializable{
             enfermedadesCronicas.add(enfermedad);
             System.out.println(enfermedad.getNombre() + " ha sido añadida");
         }
-        elss{
+        else{
             System.out.println(enfermedad.getNombre() + " se trata de una alergia. Porfavor vuelvalo a intentar");
   
         }
@@ -87,7 +87,7 @@ public class HistorialClinico implements Serializable{
             alergias.add(alergia);
             System.out.println(alergia.getNombre() + " ha sido añadida");
         }
-        elss{
+        else{
             System.out.println(alergia.getNombre() + " se trata de otro tipo de afeccion. Porfavor vuelvalo a intentar");
         }
     }
