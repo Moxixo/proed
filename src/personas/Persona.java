@@ -21,7 +21,7 @@ public abstract class Persona implements Serializable {
             existe=hospi.existeDni(dni);
         }while(existe);
         this.dni=dni;
-        hospi.aniadirPersonaHospital(this);
+        hospi.aniadirPacienteHospital(this);
     }
     
     public Persona(String nombre, String apellido,Hospital hospi){
@@ -34,7 +34,7 @@ public abstract class Persona implements Serializable {
         this.dni=dni;
         this.nombre=nombre;
         this.apellido=apellido;
-        hospi.aniadirPersonaHospital(this);
+        hospi.aniadirPacienteHospital(this);
     }
 
     public String getDni() {
