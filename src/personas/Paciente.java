@@ -1,5 +1,6 @@
 package personas;
 
+import areas.Hospital;
 import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
@@ -26,12 +27,12 @@ public class Paciente extends Persona{
     
     //Constructores
     
-    public Paciente(){
-        
+    public Paciente(Hospital hospi){
+        super(hospi);
     }
     
-    public Paciente(String dni, String nombre, String apellido) {
-        super(dni, nombre, apellido);
+    public Paciente(String nombre, String apellido,Hospital hospi) {
+        super(nombre, apellido,hospi);
     }
 
     //Getters y setters
