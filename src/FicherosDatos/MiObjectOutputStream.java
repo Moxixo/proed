@@ -10,7 +10,7 @@ import java.io.OutputStream;
 
 /**
  *
- * @author aisuw
+ * @author Kevin Miranda
  */
 public class MiObjectOutputStream extends ObjectOutputStream {
     /** Constructor que recibe OutputStream */

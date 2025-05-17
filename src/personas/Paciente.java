@@ -1,6 +1,7 @@
 package personas;
 
 import areas.Hospital;
+import info_pacientes.HistorialClinico;
 import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
@@ -13,7 +14,7 @@ public class Paciente extends Persona{
     
     //Atributos
     
-    protected String historial;
+    protected HistorialClinico historial;
     protected Medico medico;
     protected String codigo;
     protected String estado;
@@ -29,10 +30,12 @@ public class Paciente extends Persona{
     
     public Paciente(Hospital hospi){
         super(hospi);
+        
     }
     
     public Paciente(String nombre, String apellido,Hospital hospi) {
         super(nombre, apellido,hospi);
+        
     }
 
     //Getters y setters
@@ -61,11 +64,11 @@ public class Paciente extends Persona{
         this.estado = estado;
     }
     
-    public String getHistorial(){
+    public HistorialClinico getHistorial(){
         return historial;
     }
     
-    public void setHistorial(String historial){
+    public void setHistorial(HistorialClinico historial){
         this.historial = historial;
     }
     
