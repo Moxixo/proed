@@ -30,11 +30,12 @@ public class Paciente extends Persona{
     
     public Paciente(Hospital hospi){
         super(hospi);
-        
+        generarHistorial();
     }
     
     public Paciente(String nombre, String apellido,Hospital hospi) {
         super(nombre, apellido,hospi);
+        generarHistorial();
         
     }
 
@@ -280,5 +281,10 @@ public class Paciente extends Persona{
     @Override
     public int hashCode() {
         return Objects.hash(dni);
+    }
+    
+    private void generarHistorial(){
+        String idH="HC"+this.dni;
+        HistorialClinico hc =new HistorialClinico(idH);
     }
 }
