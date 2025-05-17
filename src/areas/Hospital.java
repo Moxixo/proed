@@ -6,6 +6,7 @@ package areas;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import personas.*;
 
 /**
@@ -14,13 +15,15 @@ import personas.*;
  */
 public class Hospital {
         
-    ArrayList <Area> areas;
-    HashMap<String,Persona> personasTotal;
+    protected ArrayList <Area> areas;
+    protected HashMap<String,Persona> personasTotal;
     
     
     public Hospital(){
-        ArrayList<Area> areas = new ArrayList <Area>();
+        ArrayList<Area> areas = new ArrayList();
+        HashMap<String,Persona> personasTotal= new HashMap();
         this.areas=areas;
+        this.personasTotal=personasTotal;
     }
     
     public void mapaHospital(){
@@ -48,9 +51,11 @@ public class Hospital {
     }
     
     
-    public void aniadirPacienteHospital(Persona persona){
+    public void aniadirPersonaHospital(Persona persona){
         personasTotal.put(persona.getDni(), persona);
     }
+    
+    
     
     public boolean existeDni(String dni){
         boolean existe = false;
@@ -61,6 +66,26 @@ public class Hospital {
             }
         }
         return existe;
+    }
+    
+    
+    public void obtenerDniMedicos(){
+         for (Map.Entry<String, Persona> entry : personasTotal.entrySet()) {
+            Persona persona = entry.getValue();
+            if (persona instanceof Medico) {
+                System.out.println(persona.getNombre() + " - " + entry.getKey());
+            }
+        }  
+    }
+    
+    
+    public Medico obtenerMedico(String dni) {
+        Persona p = personasTotal.get(dni);
+        if (p instanceof Medico) {
+            return (Medico) p;
+        } else {
+            return null;
+        }
     }
 }
 
