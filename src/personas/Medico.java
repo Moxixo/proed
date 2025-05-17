@@ -1,6 +1,7 @@
 package personas;
 
 import areas.Area;
+import areas.Hospital;
 
 /**
  *
@@ -12,12 +13,12 @@ public class Medico extends Persona {
 
     //Constructores
     
-    public Medico(){
-        
+    public Medico(Hospital hospi){
+        super(hospi);
     }
     
-    public Medico(String dni, String nombre, String apellido, String especialidad) {
-        super(dni, nombre, apellido);
+    public Medico(String nombre, String apellido, String especialidad, Hospital hospi) {
+        super(nombre, apellido, hospi);
         this.especialidad = especialidad;
     }
     

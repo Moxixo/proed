@@ -5,6 +5,8 @@
 package areas;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import personas.*;
 
 /**
  *
@@ -13,7 +15,7 @@ import java.util.ArrayList;
 public class Hospital {
         
     ArrayList <Area> areas;
-    
+    HashMap<String,Persona> personasTotal;
     
     
     public Hospital(){
@@ -44,6 +46,21 @@ public class Hospital {
         return areas;
         
     }
-     
+    
+    
+    public void aniadirPacienteHospital(Persona persona){
+        personasTotal.put(persona.getDni(), persona);
+    }
+    
+    public boolean existeDni(String dni){
+        boolean existe = false;
+        
+        for (String id : personasTotal.keySet()) {
+            if(dni.equalsIgnoreCase(id)){
+                existe = true;
+            }
+        }
+        return existe;
+    }
 }
 
