@@ -4,16 +4,45 @@
  */
 package gestion;
 
+import areas.Area;
 import areas.Hospital;
 import java.util.Scanner;
+import personas.Paciente;
 
 /**
  *
- * @author aisuw
+ * @author Marta L.
  */
 public class GestionMenu {
     static Scanner sc= new Scanner(System.in);
     
+    public static void inicio(Hospital hospi){
+        boolean salir= false;
+        do{
+            Menu.inicial();
+            int[] inicial= {0,1,2,3};
+            int opcion1= Menu.isInt(inicial);
+            switch(opcion1){
+                //Ingresar paciente
+                case 1:
+                    ingresarPaciente(hospi);
+                    break;
+                //Actualizar paciente
+                case 2:
+                    actualizarPaciente(hospi);
+                    break;
+                //Ver Estado
+                case 3:
+                    verEstado(hospi);
+                    break;
+                //Salir
+                case 0:
+                    System.out.println("El programa va a cerrarse");
+                    salir= true;
+                    break;
+            }
+        }while(!salir);
+    }
     
     private static void  ingresarPaciente(Hospital hospi){
         boolean salir=false;
@@ -22,13 +51,13 @@ public class GestionMenu {
             int[] ingresar={0,1,2};
             int opcion=Menu.isInt(ingresar);
             switch(opcion){
-                //
+                //Triaje(urgencias)
                 case 1:
-                
+                    ingresarTriaje(hospi);
                     break;
-                //
+                //Trasladar nueva Area
                 case 2:
-                    
+                    trasladarArea(hospi);
                     break;
                 //
                 case 0:
@@ -38,10 +67,123 @@ public class GestionMenu {
         }while(!salir);
     }
     
-    
-    
-    
-    
+        private static void ingresarTriaje(Hospital hospi){
+                boolean enLista=false;
+                boolean atendido=false;
+                do{
+                    System.out.println("Introduzca el dni del paciente");
+                    String dni=sc.nextLine();
+                    sc.next();
+                    if(hospi.obtenerPaciente(dni)!=null){  
+                        enLista=true;
+                        for(int i=0; i<hospi.getAreas().size();i++){
+                            for(int j=0; j>hospi.getAreas().get(i).getPacientes().size(); j++){
+                                if(hospi.getAreas().get(i).getPacientes().get(j).getDni().equalsIgnoreCase(dni)){
+                                    System.out.println("Ya se encuentra tendido en el hospital");
+                                    System.out.println("Nombre: "+ hospi.getAreas().get(i).getPacientes().get(j).getNombre() +" "+ hospi.getAreas().get(i).getPacientes().get(j).getApellido() +"   DNI: " + hospi.getAreas().get(i).getPacientes().get(j).getDni() +"    Area: "+hospi.getAreas().get(i).getNombre());
+                                        atendido=true;
+                                        break;
+                                }
+                            }
+                        }
+                        if(!atendido){
+                            hospi.obtenerPaciente(dni).registrarPaciente();
+                            if(hospi.obtenerPaciente(dni).getCodigo().equalsIgnoreCase("rojo")){
+                                System.out.format("""
+                                                  \n\n
+                                                  CODIGO ROJO
+                                                  CODIGO ROJO
+                                                  CODIGO ROJO
+                                                  \n\n
+                                                  Trasladar automaticamente a box.
+                                                  **Estaría sonando una alarma, pero no sabemos como implementarlo**
+                                                  """);
+                                for(int i =0; i<hospi.getAreas().size();i++){
+                                    if(hospi.getAreas().get(i).getNombre().equalsIgnoreCase("Urgencias")){
+                                        hospi.getAreas().get(i).aniadirPaciente(hospi.obtenerPaciente(dni));
+                                        hospi.getAreas().get(i).asignarCamaDisponible(hospi.getAreas().get(i).getPacientes().getLast());
+                                    }
+                            }
+                            }
+                        }
+                    }else{
+                        System.out.println("No hay nadie con ese dni en nuestro sistema");
+                        System.out.println("Introduzca los datos que se le requieran para aniadirlo a nuestro sistema");
+                        System.out.println("Introduzca el nombre");
+                        String nombre=sc.nextLine();
+                        sc.next();
+                        System.out.println("Introduzca el apellido");
+                        String apellido=sc.nextLine();
+                        sc.next();
+                        Paciente p1=new Paciente(nombre,apellido,dni,hospi);
+                        if(hospi.obtenerPaciente(p1.getDni())!=null){
+                            enLista=true;
+                            hospi.obtenerPaciente(p1.getDni()).registrarPaciente();
+                            if(hospi.obtenerPaciente(p1.getDni()).getCodigo().equalsIgnoreCase("rojo")){
+                                System.out.format("""
+                                                  \n\n
+                                                  CODIGO ROJO
+                                                  CODIGO ROJO
+                                                  CODIGO ROJO
+                                                  \n\n
+                                                  Trasladar automaticamente a box.
+                                                  **Estaría sonando una alarma, pero no sabemos como implementarlo**
+                                                  """);
+                                for(int i =0; i<hospi.getAreas().size();i++){
+                                    if(hospi.getAreas().get(i).getNombre().equalsIgnoreCase("Urgencias")){
+                                        hospi.getAreas().get(i).aniadirPaciente(hospi.obtenerPaciente(p1.getDni()));
+                                        hospi.getAreas().get(i).asignarCamaDisponible(hospi.getAreas().get(i).getPacientes().getLast());
+                                    }
+                            }
+                            }
+                        }else{
+                            System.out.println("Error no se aniadio");
+                        }
+                    }
+                }while(!enLista);  
+        }
+        
+        private static void trasladarArea(Hospital hospi){
+            boolean enLista=false;
+            do{
+                System.out.println("Introduzca el dni del paciente");
+                String dni=sc.nextLine();
+                sc.next();
+                if(hospi.obtenerPaciente(dni)!=null){  
+                    for(int i=0; i<hospi.getAreas().size();i++){
+                        for(int j=0; j>hospi.getAreas().get(i).getPacientes().size(); j++){
+                            if(hospi.getAreas().get(i).getPacientes().get(j).getDni().equalsIgnoreCase(dni)){
+                                hospi.getAreas().get(i).getPacientes().remove(j);
+                                break;
+                            }
+                        }
+                    }
+                    boolean plantaCorrecta=false;
+                    do{
+                    System.out.println("Introduzca el nombre de la nueva area");
+                    String nuevaArea=sc.nextLine();
+                    sc.next();
+                    for(int i = 0; i<hospi.getAreas().size();i++){
+                        if(hospi.getAreas().get(i).getNombre().equalsIgnoreCase(nuevaArea)){
+                            hospi.getAreas().get(i).aniadirPaciente(hospi.obtenerPaciente(dni));
+                            plantaCorrecta=true;
+                            enLista=true;
+                            break;
+                        }else{
+                            System.out.println("Error nombre nueva planta");
+                            plantaCorrecta=false;
+                            for(int j = 0; j<hospi.getAreas().size();j++){
+                                System.out.println(hospi.getAreas().get(i).getNombre());
+                            }
+                        }
+                    }
+                    }while(!plantaCorrecta);
+                } 
+                else{
+                    System.out.println("Introduzca un dni correcto porfavor");
+                }
+            }while(!enLista);
+        }
     
     private static void verEstado(Hospital hospi){
         boolean salir=false;
@@ -132,8 +274,8 @@ public class GestionMenu {
                                 System.out.println("Equipos medicos disponibles en la UCI");
                                 System.out.println("_______________________________________________");
                                 for(int j=0;j< hospi.getAreas().get(i).getMateriales().size();j++){
-                                    if(!hospi.getAreas().get(i).getMateriales().get(j).isUsando()){
-                                        System.out.println("Nombre: " + hospi.getAreas().get(i).getMateriales().get(j).getNombre()+"    Cantidad: " +hospi.getAreas().get(i).getMateriales().get(j).getCantidad());
+                                    if(hospi.getAreas().get(i).getMateriales().get(j).getCantidad()>0){
+                                        System.out.println("Nombre: " + hospi.getAreas().get(i).getMateriales().get(j).getNombre()+"    Cantidad: " +(hospi.getAreas().get(i).getMateriales().get(j).getCantidad()-hospi.getAreas().get(i).getMateriales().get(j).getUsando()));
                                     }
                                 }
                             }
@@ -147,8 +289,8 @@ public class GestionMenu {
                                 System.out.println("Equipos medicos disponibles en la Urgencias");
                                 System.out.println("_______________________________________________");
                                 for(int j=0;j< hospi.getAreas().get(i).getMateriales().size();j++){
-                                    if(!hospi.getAreas().get(i).getMateriales().get(j).isUsando()){
-                                        System.out.println("Nombre: " + hospi.getAreas().get(i).getMateriales().get(j).getNombre()+"    Cantidad: " +hospi.getAreas().get(i).getMateriales().get(j).getCantidad());
+                                    if(hospi.getAreas().get(i).getMateriales().get(j).getCantidad()>0){
+                                        System.out.println("Nombre: " + hospi.getAreas().get(i).getMateriales().get(j).getNombre()+"    Cantidad: " +(hospi.getAreas().get(i).getMateriales().get(j).getCantidad()-hospi.getAreas().get(i).getMateriales().get(j).getUsando()));
                                     }
                                 }
                             }
@@ -165,8 +307,8 @@ public class GestionMenu {
                                 System.out.println("Equipos medicos disponibles en la Urgencias");
                                 System.out.println("_______________________________________________");
                                 for(int j=0;j< hospi.getAreas().get(i).getMateriales().size();j++){
-                                    if(!hospi.getAreas().get(i).getMateriales().get(j).isUsando()){
-                                        System.out.println("Nombre: " + hospi.getAreas().get(i).getMateriales().get(j).getNombre()+"    Cantidad: " +hospi.getAreas().get(i).getMateriales().get(j).getCantidad());
+                                    if(hospi.getAreas().get(i).getMateriales().get(j).getCantidad()>0){
+                                        System.out.println("Nombre: " + hospi.getAreas().get(i).getMateriales().get(j).getNombre()+"    Cantidad: " +(hospi.getAreas().get(i).getMateriales().get(j).getCantidad()-hospi.getAreas().get(i).getMateriales().get(j).getUsando()));
                                     }
                                 }
                             }

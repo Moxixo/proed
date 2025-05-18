@@ -27,8 +27,8 @@ public class Paciente extends Persona{
     
     //Constructores
     
-    public Paciente(Hospital hospi){
-        super(hospi);
+    public Paciente(String nombre, String apellido,String dni,Hospital hospi) {
+        super(nombre, apellido,dni,hospi);
         generarHistorial();
     }
     
@@ -74,13 +74,13 @@ public class Paciente extends Persona{
      * 
      * @param paciente
      */
-    public static void registrarPaciente(Paciente paciente){
-        paciente.addConstantes();
+    public void registrarPaciente(){
+        this.addConstantes();
         
-        String codigo = paciente.asignarCodigoColor();
-        paciente.setCodigo(codigo);
+        String codigo = this.asignarCodigoColor();
+        this.setCodigo(codigo);
         
-        System.out.println("El paciente " + paciente.nombre + " " + paciente.apellido + " ha sido clasificado como: " + codigo.toUpperCase());
+        System.out.println("El paciente " + this.nombre + " " + this.apellido + " ha sido clasificado como: " + codigo.toUpperCase());
     }
     
     /**

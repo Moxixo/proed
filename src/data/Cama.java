@@ -8,7 +8,7 @@ import personas.Paciente;
 
 /**
  *
- * @author Carlos D.HD
+ * @author Carlos D.HD 
  */
 public class Cama {
     

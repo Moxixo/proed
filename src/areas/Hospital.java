@@ -11,7 +11,7 @@ import personas.*;
 
 /**
  *
- * @author s3ira
+ * @author Kevin Miranda
  */
 public class Hospital {
         

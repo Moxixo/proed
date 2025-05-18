@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author 
+ * @author Marta L. , Sheila R. , Kevin M. & Carlos D.HD
  */
 public class Main {
 
@@ -21,39 +21,17 @@ public class Main {
      * @param args the command line arguments
      */
     
-    static Hospital hospi= null;
+    static Hospital hospi= new Hospital();
     static String ruta="src/prueba/hospital.dat";
     static File fichero= new File(ruta);
     
     
     public static void main(String[] args) {
+        
         inicioPrograma();
-        Scanner sc= new Scanner(System.in);
-        boolean salir= false;
-        do{
-            Menu.inicial();
-            int[] inicial= {0,1,2,3};
-            int opcion1= Menu.isInt(inicial);
-            boolean enLista=false;
-            switch(opcion1){
-                //Ingresar paciente
-                case 1:
-                    ingresarPaciente(hospi);
-                //Actualizar paciente
-                case 2:
-                    actualizarPaciente(hospi);
-                    break;
-                //Ver Estado
-                case 3:
-                    verEstado(hospi);
-                    break;
-                //Salir
-                case 0:
-                    System.out.println("El programa va a cerrarse");
-                    finPrograma();
-                    salir= true;
-            }
-        }while(!salir);
+        GestionMenu.inicio(hospi);
+        finPrograma();
+        
     }
     
     /**

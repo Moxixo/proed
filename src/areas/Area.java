@@ -17,7 +17,7 @@ public class Area {
     
     //FALTA LOS GETTERS DE LA CLASE DE CAMAS
     
-    protected int tipo; //Quirófano, habitación, sala, box...
+    protected int tipo; //Quirófano, habitación, (1)sala, box...
     protected String nombre;
     protected ArrayList<Cama> camas = new ArrayList<>();
     protected ArrayList<Medico> medicos = new ArrayList<>();
