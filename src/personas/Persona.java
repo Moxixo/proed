@@ -3,6 +3,7 @@ package personas;
 import areas.Hospital;
 import java.io.Serializable;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  *
@@ -13,14 +14,11 @@ public abstract class Persona implements Serializable {
     protected String nombre;
     protected String apellido;
     
-    public Persona(Hospital hospi){
-        boolean existe=false;
-        String dni;
-        do{
-            dni = crearId();
-            existe=hospi.existeDni(dni);
-        }while(existe);
-        this.dni=dni;
+    public Persona(String nombre, String apellido,String dni,Hospital hospi){
+        
+        this.dni=asegurarId(dni);
+        this.nombre=nombre;
+        this.apellido=apellido;
         hospi.aniadirPersonaHospital(this);
     }
     
@@ -70,5 +68,28 @@ public abstract class Persona implements Serializable {
                 } 
             }
         return id;
+    }
+    
+    private String asegurarId(String dni){
+        Scanner sc= new Scanner(System.in);
+        String dniCorrect=null;
+        String regex = "\\d{3}[A-Z]";
+        if(dni != null && dni.matches(regex)){
+            return dniCorrect=dni;
+        }else{
+            boolean correcto= false;
+            do{
+                System.out.println("El dni es incorrecto porfavor introduzca un id correcto como seria: '000A'");
+                String newDni=sc.nextLine();
+                sc.next();
+                if(newDni != null && newDni.matches(regex)){
+                    correcto=true;
+                    return dniCorrect=newDni;
+                }else{
+                    correcto=false;
+                }    
+            }while(!correcto);
+        }
+        return dniCorrect;
     }
 }

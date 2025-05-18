@@ -32,7 +32,7 @@ public class Menu {
                           *********************************
                           *      ¿QUE DESEAS HACER?       *
                           *********************************
-                          *   1-Triaje/Urgencias          *
+                          *   1-Triaje(Urgencias)         *
                           *   2-Trasladar area            *
                           *                               *
                           *   0-Volver                    *

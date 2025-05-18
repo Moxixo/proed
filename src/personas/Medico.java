@@ -13,9 +13,7 @@ public class Medico extends Persona {
 
     //Constructores
     
-    public Medico(Hospital hospi){
-        super(hospi);
-    }
+    
     
     public Medico(String nombre, String apellido, String especialidad, Hospital hospi) {
         super(nombre, apellido, hospi);
