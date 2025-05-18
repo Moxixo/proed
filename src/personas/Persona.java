@@ -57,7 +57,6 @@ public abstract class Persona implements Serializable {
     private String crearId(){    
         Random random =new Random();
         String id="";
-        boolean igual = true;
             for (int i = 0; i<5; i++){
                 if(i==4){
                     char letra=(char) ('A'+ random.nextInt(26));

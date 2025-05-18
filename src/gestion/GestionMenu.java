@@ -11,7 +11,7 @@ import personas.Paciente;
 
 /**
  *
- * @author aisuw
+ * @author Marta L.
  */
 public class GestionMenu {
     static Scanner sc= new Scanner(System.in);
@@ -274,8 +274,8 @@ public class GestionMenu {
                                 System.out.println("Equipos medicos disponibles en la UCI");
                                 System.out.println("_______________________________________________");
                                 for(int j=0;j< hospi.getAreas().get(i).getMateriales().size();j++){
-                                    if(!hospi.getAreas().get(i).getMateriales().get(j).isUsando()){
-                                        System.out.println("Nombre: " + hospi.getAreas().get(i).getMateriales().get(j).getNombre()+"    Cantidad: " +hospi.getAreas().get(i).getMateriales().get(j).getCantidad());
+                                    if(hospi.getAreas().get(i).getMateriales().get(j).getCantidad()>0){
+                                        System.out.println("Nombre: " + hospi.getAreas().get(i).getMateriales().get(j).getNombre()+"    Cantidad: " +(hospi.getAreas().get(i).getMateriales().get(j).getCantidad()-hospi.getAreas().get(i).getMateriales().get(j).getUsando()));
                                     }
                                 }
                             }
@@ -289,8 +289,8 @@ public class GestionMenu {
                                 System.out.println("Equipos medicos disponibles en la Urgencias");
                                 System.out.println("_______________________________________________");
                                 for(int j=0;j< hospi.getAreas().get(i).getMateriales().size();j++){
-                                    if(!hospi.getAreas().get(i).getMateriales().get(j).isUsando()){
-                                        System.out.println("Nombre: " + hospi.getAreas().get(i).getMateriales().get(j).getNombre()+"    Cantidad: " +hospi.getAreas().get(i).getMateriales().get(j).getCantidad());
+                                    if(hospi.getAreas().get(i).getMateriales().get(j).getCantidad()>0){
+                                        System.out.println("Nombre: " + hospi.getAreas().get(i).getMateriales().get(j).getNombre()+"    Cantidad: " +(hospi.getAreas().get(i).getMateriales().get(j).getCantidad()-hospi.getAreas().get(i).getMateriales().get(j).getUsando()));
                                     }
                                 }
                             }
@@ -307,8 +307,8 @@ public class GestionMenu {
                                 System.out.println("Equipos medicos disponibles en la Urgencias");
                                 System.out.println("_______________________________________________");
                                 for(int j=0;j< hospi.getAreas().get(i).getMateriales().size();j++){
-                                    if(!hospi.getAreas().get(i).getMateriales().get(j).isUsando()){
-                                        System.out.println("Nombre: " + hospi.getAreas().get(i).getMateriales().get(j).getNombre()+"    Cantidad: " +hospi.getAreas().get(i).getMateriales().get(j).getCantidad());
+                                    if(hospi.getAreas().get(i).getMateriales().get(j).getCantidad()>0){
+                                        System.out.println("Nombre: " + hospi.getAreas().get(i).getMateriales().get(j).getNombre()+"    Cantidad: " +(hospi.getAreas().get(i).getMateriales().get(j).getCantidad()-hospi.getAreas().get(i).getMateriales().get(j).getUsando()));
                                     }
                                 }
                             }

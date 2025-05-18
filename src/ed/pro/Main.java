@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author 
+ * @author Marta L. , Sheila R. , Kevin M. & Carlos D.HD
  */
 public class Main {
 
@@ -21,7 +21,7 @@ public class Main {
      * @param args the command line arguments
      */
     
-    static Hospital hospi= null;
+    static Hospital hospi= new Hospital();
     static String ruta="src/prueba/hospital.dat";
     static File fichero= new File(ruta);
     

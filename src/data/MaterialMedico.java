@@ -6,17 +6,17 @@ package data;
 
 /**
  *
- * @author aisuw
+ * @author Marta Lou
  */
 public class MaterialMedico {
     protected String nombre;
     protected int cantidad;
-    protected boolean usando;
+    protected int usando;
     
     public MaterialMedico(String nombre,int cantidad){
         this.nombre=nombre;
         this.cantidad=cantidad;
-        this.usando=false;
+        this.usando=0;
     }
 
     public String getNombre() {
@@ -27,7 +27,7 @@ public class MaterialMedico {
         return cantidad;
     }
 
-    public boolean isUsando() {
+    public int getUsando() {
         return usando;
     }
 
@@ -35,20 +35,9 @@ public class MaterialMedico {
         this.cantidad = cantidad;
     }
 
-    public void setUsando(boolean usando) {
+    public void setUsando(int usando) {
         this.usando = usando;
     }
     
-    public void alternarEstado(){
-        if(this.usando){
-            System.out.println("El objeto estaba siendo usado.");
-            this.usando=false;
-            System.out.println("Se ha modificado a sin usar");
-        }else{
-            System.out.println("El objeto estaba sin usar.");
-            this.usando=true;
-            System.out.println("Se ha modificado a usando");
-        }
-    }
     
 }
