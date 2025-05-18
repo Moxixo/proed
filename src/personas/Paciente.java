@@ -15,7 +15,6 @@ public class Paciente extends Persona{
     //Atributos
     
     protected HistorialClinico historial;
-    protected Medico medico;
     protected String codigo;
     protected String estado;
     protected int prioridad;
@@ -41,13 +40,7 @@ public class Paciente extends Persona{
 
     //Getters y setters
     
-    public Medico getMedico() {
-        return medico;
-    }
-
-    public void setMedico(Medico medico) {
-        this.medico = medico;
-    }
+    
 
     public String getCodigo() {
         return codigo;

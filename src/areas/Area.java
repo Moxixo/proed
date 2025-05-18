@@ -4,7 +4,7 @@
  */
 package areas;
 
-import data.Cama;
+import data.*;
 import java.util.ArrayList;
 import personas.Medico;
 import personas.Paciente;
@@ -22,26 +22,8 @@ public class Area {
     protected ArrayList<Cama> camas = new ArrayList<>();
     protected ArrayList<Medico> medicos = new ArrayList<>();
     protected ArrayList<Paciente> pacientes = new ArrayList<>();
+    protected ArrayList<MaterialMedico> materiales= new ArrayList<>();
 
-    public Area(){
-        ArrayList<Medico> medicos = new ArrayList<>();
-        this.medicos=medicos;
-        ArrayList<Paciente> pacientes = new ArrayList<>();
-        this.pacientes=pacientes;
-        
-        ArrayList<Cama> camas = new ArrayList<>();
-        this.camas=camas;
-        Cama cama1 = new Cama();//De momento tenemos un supuesto de 5 camas por area creada
-        Cama cama2 = new Cama();
-        Cama cama3 = new Cama();
-        Cama cama4 = new Cama();
-        Cama cama5 = new Cama();
-        camas.add(cama1);
-        camas.add(cama2);
-        camas.add(cama3);  
-        camas.add(cama4);
-        camas.add(cama5);
-    }
     
     public Area(int tipo, String nombre) {
         this.tipo = tipo;
@@ -51,6 +33,8 @@ public class Area {
         this.medicos=medicos;
         ArrayList<Paciente> pacientes = new ArrayList<>();
         this.pacientes=pacientes;
+        ArrayList<MaterialMedico> materiales = new ArrayList<>();
+        this.materiales=materiales;
         
         ArrayList<Cama> camas = new ArrayList<>();
         this.camas=camas;
@@ -192,5 +176,10 @@ public class Area {
         this.nombre = nombre;
     }
 
+    public ArrayList<MaterialMedico> getMateriales() {
+        return materiales;
+    }
+    
+    
     
 }

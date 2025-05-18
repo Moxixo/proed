@@ -87,5 +87,14 @@ public class Hospital {
             return null;
         }
     }
+    
+    public Paciente obtenerPaciente(String dni) {
+        Persona p = personasTotal.get(dni);
+        if (p instanceof Paciente) {
+            return (Paciente) p;
+        } else {
+            return null;
+        }
+    }
 }
 
