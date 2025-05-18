@@ -40,13 +40,14 @@ public class Informe implements Serializable{
     
     
     public void aniadirProcedimiento(){//(comprobar antes que esta abierto
+        Scanner key = new Scanner(System.in);
         if(this.abierto){
-            Scanner sc = new Scanner(System.in);
+            
             String procedimiento;
             boolean confirmado= false;
             do{
                 System.out.println("Por favor introduzca el sintoma");
-                procedimiento=sc.nextLine();
+                procedimiento=key.nextLine();
                 confirmado=confirmarAniadir(procedimiento);
             }while(enBlanco(procedimiento)&& !confirmado);
             procedimientos.add(procedimiento);
@@ -54,39 +55,42 @@ public class Informe implements Serializable{
             System.out.println("El informe no se encuentra abierto. Fue cerrado a fecha: "+this.fechaFinal);
             System.out.println("Asegure que se trata del informe correcto");
         }
+        key.close();
     }
     
     public void aniadirSintoma(){
-        if(this.abierto){
-            Scanner sc = new Scanner(System.in);
-            String sintoma;
-            boolean confirmado= false;
-            do{
-                System.out.println("Por favor introduzca el sintoma");
-                sintoma=sc.nextLine();
-                confirmado=confirmarAniadir(sintoma);
-            }while(enBlanco(sintoma)&& !confirmado);
-            if(!enLista(sintoma,sintomas)){
-                sintomas.add(sintoma);
+        try (Scanner key = new Scanner(System.in)) {
+            if(this.abierto){
+                
+                String sintoma;
+                
+                do{
+                    System.out.println("Por favor introduzca el sintoma");
+                    sintoma=key.next();
+                }while(enBlanco(sintoma));
+                if(!enLista(sintoma,sintomas)){
+                    sintomas.add(sintoma);
+                }else{
+                    System.out.println("Ya fue añadido");
+                }
             }else{
-                System.out.println("Ya fue añadido");
+                System.out.println("El informe no se encuentra abierto. Fue cerrado a fecha: "+this.fechaFinal);
+                System.out.println("Asegure que se trata del informe correcto");
             }
-        }else{
-            System.out.println("El informe no se encuentra abierto. Fue cerrado a fecha: "+this.fechaFinal);
-            System.out.println("Asegure que se trata del informe correcto");
         }
     }
     
     private boolean confirmarAniadir(String aniadir){
-        Scanner sc= new Scanner(System.in);
+        Scanner sckey= new Scanner(System.in);
         boolean correct=false;
         boolean confirmado=false;
         do{
-            System.out.println("Quiere aniadir " + aniadir +", si es correcto pulse 'S' . Si no lo es pulse 'N' .");
-            String correcto=sc.nextLine();
+            System.out.println("Quiere aniadir " + aniadir +", si es correcto pulse 'Si' . Si no lo es pulse 'No' .");
+            String correcto=sckey.next();
             if(correcto.equalsIgnoreCase("S")||correcto.equalsIgnoreCase("s")){
                 correct=true;
                 confirmado=true;
+                System.out.println("Se ha aniadio");
             }    
             else if(correcto.equalsIgnoreCase("N")|| correcto.equalsIgnoreCase("n")){
                 correct=true;
@@ -97,6 +101,7 @@ public class Informe implements Serializable{
                 System.out.println("Porfavor introduzca correctamente la letra");
             }
         }while(!correct);
+        sckey.close();
         return confirmado;
     }
     

@@ -42,12 +42,12 @@ public class BBDD {
         
         
         
-        Medico m1= new Medico("Zola","Shepherd","Neurologia",hospi);
-        Medico m2= new Medico("Belinda","Gordon","Psicologia",hospi);
-        Medico m3= new Medico("Percy","Jackson","Urgencias",hospi);
-        Medico m4= new Medico("Ryshand","Grey","Urgencias",hospi);
+        Medico m1= new Medico("Zola","Shepherd","Neurologia","001Z",hospi);
+        Medico m2= new Medico("Belinda","Gordon","Psicologia","001B",hospi);
+        Medico m3= new Medico("Percy","Jackson","Urgencias","001P",hospi);
+        Medico m4= new Medico("Ryshand","Grey","Urgencias","001R",hospi);
         
-        Paciente p1= new Paciente("Alina","Black",hospi);
+        Paciente p1= new Paciente("Alina","Black","000A",hospi);
         p1.registrarPaciente();
         p1.getHistorial().getAlergias().add("Latex");
         p1.getHistorial().getAlergias().add("Acaros");
@@ -67,7 +67,7 @@ public class BBDD {
         p1.getHistorial().getAntecedentes().add(i2);
         p1.getHistorial().getAntecedentes().add(i1);
         
-        Paciente p2= new Paciente("Jack","Lupin",hospi);
+        Paciente p2= new Paciente("Jack","Lupin","000J",hospi);
         p2.registrarPaciente();
         p2.getHistorial().getAlergias().add("Penicilina");
         p2.getHistorial().getAlergias().add("Ibuprofeno");
@@ -87,7 +87,7 @@ public class BBDD {
         p2.getHistorial().getAntecedentes().add(i4);
         p2.getHistorial().getAntecedentes().add(i3);
         
-        Paciente p3= new Paciente("Paco","De La Robia",hospi);
+        Paciente p3= new Paciente("Paco","De La Robia","000P",hospi);
         p3.getHistorial().getAlergias().add("Gato");
         Informe i5=new Informe(0,LocalDate.of(2011, 2, 20),m3,"Posible reaccion alergica");
         i5.setFechaFinal(LocalDate.of(2011,2,20));
@@ -99,7 +99,7 @@ public class BBDD {
         i5.setAbierto(false);
         p3.getHistorial().getAntecedentes().add(i5);
         
-        Paciente p4=new Paciente("Bibi","Stern",hospi);
+        Paciente p4=new Paciente("Bibi","Stern","000B",hospi);
         p4.getHistorial().getEnfermedadesCronicas().add("Depresion severa");
         Informe i6=new Informe(0,LocalDate.of(2006, 7, 17),m2,"Encontrada inconsciente, consumo de estupefacientes");
         i6.setFechaFinal(LocalDate.of(2006,7,27));
@@ -127,6 +127,7 @@ public class BBDD {
         urgencias.getMateriales().add(mm6);
         urgencias.getMateriales().add(mm7);
         urgencias.getMateriales().add(mm8);
+        
         
         hospi.aniadirArea(urgencias);
         

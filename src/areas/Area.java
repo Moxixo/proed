@@ -5,6 +5,7 @@
 package areas;
 
 import data.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import personas.Medico;
 import personas.Paciente;
@@ -13,7 +14,7 @@ import personas.Paciente;
  *
  * @author Kevin M.
  */
-public class Area {
+public class Area implements Serializable{
     
     //FALTA LOS GETTERS DE LA CLASE DE CAMAS
     

@@ -168,23 +168,7 @@ public class HistorialClinico implements Serializable{
                 abierto=true;
             }
         }
-        if(!abierto){
-            System.out.println("No hay ningun informe abierto, reviselo de nuevo");
-        }else{
-            boolean entradaValida= false;
-            System.out.println("Introduzca el id del informe que desea modificar");
-            do {
-                if (sc.hasNextInt()) {
-                    obtenido = sc.nextInt();
-                    for(int i=0; i<this.antecedentes.size();i++){
-                        if(antecedentes.get(i).getId()==obtenido && antecedentes.get(i).getIsAbierto()){
-                            entradaValida=true;
-                            break;
-                        }
-                    }
-                }
-        }while(!entradaValida);
-        }
+        
         return obtenido;
     }
 }

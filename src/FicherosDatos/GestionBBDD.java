@@ -37,19 +37,18 @@ public class GestionBBDD {
     }
     
     
-    public static void aniadirFichero(Hospital hospi, String ruta){
-        File fichero = new File(ruta);
+    public static void aniadirFichero(Hospital hospi, File fichero){
         if(fichero.exists()){
-            escribirHospital(fichero,hospi);
+            escribirHospital(hospi,fichero);
         }else{
             crearFichero(fichero);
-            escribirHospital(fichero,hospi);
+            escribirHospital(hospi,fichero);
         }
     }
     
     
-    public static void escribirHospital(File fichero,Hospital hospi){
-        try{MiObjectOutputStream oos = new MiObjectOutputStream( new FileOutputStream (fichero));
+    public static void escribirHospital(Hospital hospi,File fichero){
+        try{ObjectOutputStream oos = new ObjectOutputStream( new FileOutputStream (fichero));
                 oos.writeObject(hospi);
                 System.out.println("Fichero escrito");
                 oos.close();
@@ -58,11 +57,9 @@ public class GestionBBDD {
             }
     }
     
-    public static Hospital leerFichero(String ruta){
-        Hospital hospi= null;
-        File fichero= new File(ruta);
+    public static Hospital leerFichero(File fichero, Hospital hospi){
         if(fichero.exists()){
-            hospi=leerHospital(fichero);
+            hospi=leerHospital(fichero,hospi);
         }else{
             System.out.println("No existe el fichero, no se puede leer");
         }
@@ -70,11 +67,10 @@ public class GestionBBDD {
         return hospi;
     }
     
-    public static Hospital leerHospital(File fichero){
-        Hospital hospi= null;
-        try{ObjectInputStream oos = new ObjectInputStream( new FileInputStream (fichero));
-                hospi=(Hospital) oos.readObject();
-                oos.close();
+    public static Hospital leerHospital(File fichero,Hospital hospi){
+        try{ObjectInputStream ios = new ObjectInputStream( new FileInputStream (fichero));
+                hospi=(Hospital) ios.readObject();
+                ios.close();
             } catch (IOException ex) {
                 System.out.println("Error Fatal");
             } catch (ClassNotFoundException ex) {

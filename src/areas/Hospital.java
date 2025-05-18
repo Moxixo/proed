@@ -4,6 +4,7 @@
  */
 package areas;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,7 +14,7 @@ import personas.*;
  *
  * @author Kevin Miranda
  */
-public class Hospital {
+public class Hospital implements Serializable{
         
     protected ArrayList <Area> areas;
     protected HashMap<String,Persona> personasTotal;
