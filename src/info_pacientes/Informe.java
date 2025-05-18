@@ -18,7 +18,7 @@ public class Informe implements Serializable{
     
     protected int id;
     protected Medico medico; //Medico el cual ha iniciado el informe
-    protected LocalDate fechaIncio;
+    protected LocalDate fechaInicio;
     protected LocalDate fechaFinal;
     protected ArrayList<String> sintomas;
     protected String motivoInicial;
@@ -30,7 +30,7 @@ public class Informe implements Serializable{
         ArrayList<String> procedimientos= new ArrayList();
         ArrayList<String> sintomas= new ArrayList();
         this.id = id;
-        this.fechaIncio = fechaIncio;
+        this.fechaInicio = fechaIncio;
         this.abierto = true;
         this.medico = medico;
         this.motivoInicial=motivoInicial;
@@ -129,8 +129,8 @@ public class Informe implements Serializable{
         return medico;
     }
 
-    public LocalDate getFechaIncio() {
-        return fechaIncio;
+    public LocalDate getFechaInicio() {
+        return fechaInicio;
     }
 
     public LocalDate getFechaFinal() {
@@ -149,7 +149,7 @@ public class Informe implements Serializable{
         return procedimientos;
     }
 
-    public boolean isAbierto() {
+    public boolean getIsAbierto() {
         return abierto;
     }
 
@@ -158,7 +158,7 @@ public class Informe implements Serializable{
     }
 
     public void setFechaIncio(LocalDate fechaIncio) {
-        this.fechaIncio = fechaIncio;
+        this.fechaInicio = fechaIncio;
     }
 
     public void setFechaFinal(LocalDate fechaFinal) {

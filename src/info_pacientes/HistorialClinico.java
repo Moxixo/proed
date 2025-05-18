@@ -6,7 +6,6 @@ package info_pacientes;
 
 import areas.Hospital;
 import java.util.ArrayList;
-import data.Afeccion;
 import info_pacientes.Informe;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -20,14 +19,14 @@ public class HistorialClinico implements Serializable{
     
     protected String id; //El id nos ayudará a diferenciar los historiales
     protected ArrayList<Informe> antecedentes; 
-    protected ArrayList<Afeccion> alergias;
-    protected ArrayList<Afeccion> enfermedadesCronicas;
+    protected ArrayList<String> alergias;
+    protected ArrayList<String> enfermedadesCronicas;
     
     public HistorialClinico(String id){
         this.id= id;
         ArrayList<Informe> antecedentes = new ArrayList(); 
-        ArrayList<Afeccion> alergias= new ArrayList();
-        ArrayList<Afeccion> enfermedadesCronicas= new ArrayList();
+        ArrayList<String> alergias= new ArrayList();
+        ArrayList<String> enfermedadesCronicas= new ArrayList();
         this.alergias=alergias;
         this.antecedentes=antecedentes;
         this.enfermedadesCronicas= enfermedadesCronicas;
@@ -46,11 +45,11 @@ public class HistorialClinico implements Serializable{
         return antecedentes;
     }
 
-    public ArrayList<Afeccion> getAlergias() {
+    public ArrayList<String> getAlergias() {
         return alergias;
     }
 
-    public ArrayList<Afeccion> getEnfermedadesCronicas() {
+    public ArrayList<String> getEnfermedadesCronicas() {
         return enfermedadesCronicas;
     }
     
@@ -82,12 +81,14 @@ public class HistorialClinico implements Serializable{
     /**
      * AniadirEnfermedad  permite añadir nuevas afecciones del tipo enfermedad al ArrayList autogenerado llamado enfermedadesCronicas.
      * El metodo controla si la enfermedad ya ha sido añadido y si es de otro tipo que no sea enfermedad.
-     * @param nuevoEnfermedad 
      */
-    public void aniadirEnfermedad(Afeccion nuevaEnfermedad){
+    public void aniadirEnfermedad(){
+        Scanner sc= new Scanner(System.in);
+        System.out.println("Introduzca la enfermedad a aniadir");
+        String nuevaEnfermedad=sc.nextLine();
         boolean existe= false;
-        for(Afeccion enfermedad: enfermedadesCronicas){
-            if(nuevaEnfermedad.getNombre().equalsIgnoreCase(enfermedad.getNombre())){
+        for(String enfermedad: enfermedadesCronicas){
+            if(nuevaEnfermedad.equalsIgnoreCase(enfermedad)){
                 existe=true;
                 break;
             }
@@ -96,41 +97,37 @@ public class HistorialClinico implements Serializable{
             System.out.println("La enfermedad ya fue añadida");
         }
         else{
-            if(!nuevaEnfermedad.getTipo().equalsIgnoreCase("Enfermedad")){
-                System.out.println(nuevaEnfermedad.getNombre() + " se trata de otro tipo de afeccion. Porfavor vuelvalo a intentar");
-            }
-            else{
-                enfermedadesCronicas.add(nuevaEnfermedad);
-                System.out.println(nuevaEnfermedad.getNombre() + " ha sido añadida");
-            }
+            this.enfermedadesCronicas.add(nuevaEnfermedad);
         }
         
     }
     
-    public void aniadirAlergia(Afeccion alergia){
+    public void aniadirAlergia(){
+        Scanner sc= new Scanner(System.in);
+        System.out.println("Introduzca la alergia a aniadir");
+        String alergia=sc.nextLine();
         boolean existe =false;
-        for(Afeccion enfermedad: enfermedadesCronicas){
-            if(alergia.getNombre().equalsIgnoreCase(enfermedad.getNombre())){
+        for(String enfermedad: alergias){
+            if(alergia.equalsIgnoreCase(enfermedad)){
                 existe=true;
                 break;
             }
         }
         if(existe){
-            System.out.println("La enfermedad ya fue añadida");
+            System.out.println("La alergia ya fue añadida");
         }
         else{
-            if(alergia.getTipo().equalsIgnoreCase("Alergia")){
-                alergias.add(alergia);
-                System.out.println(alergia.getNombre() + " ha sido añadida");
-            }
-            else{
-                System.out.println(alergia.getNombre() + " se trata de otro tipo de afeccion. Porfavor vuelvalo a intentar");
-            }
+            this.alergias.add(alergia);
         }
     }
     
     private Informe crearInforme(Hospital hospi){
-        int id = (antecedentes.get(antecedentes.size()-1).getId())+1;
+        int id=0;
+        if(antecedentes.isEmpty()){
+            id=000;
+        }else{
+            id = (antecedentes.get(antecedentes.size()).getId())+1;
+        }
         Scanner sc = new Scanner(System.in);
         Medico m1= obtenerMedico(hospi);
         System.out.println("Introduce el motivo inicial del paciente");
@@ -159,5 +156,35 @@ public class HistorialClinico implements Serializable{
             }
         }while(!enLista);
         return m1;
+    }
+    
+    public int obtenerIdInforme(){
+        Scanner sc= new Scanner(System.in);
+        int obtenido=0;
+        boolean abierto=false;
+        for(int i=0; i<this.antecedentes.size();i++){
+            if(antecedentes.get(i).getIsAbierto()){
+                System.out.println("Id: " + antecedentes.get(i).getId() + " con fecha de inicio: " +antecedentes.get(i).getFechaInicio());
+                abierto=true;
+            }
+        }
+        if(!abierto){
+            System.out.println("No hay ningun informe abierto, reviselo de nuevo");
+        }else{
+            boolean entradaValida= false;
+            System.out.println("Introduzca el id del informe que desea modificar");
+            do {
+                if (sc.hasNextInt()) {
+                    obtenido = sc.nextInt();
+                    for(int i=0; i<this.antecedentes.size();i++){
+                        if(antecedentes.get(i).getId()==obtenido && antecedentes.get(i).getIsAbierto()){
+                            entradaValida=true;
+                            break;
+                        }
+                    }
+                }
+        }while(!entradaValida);
+        }
+        return obtenido;
     }
 }
