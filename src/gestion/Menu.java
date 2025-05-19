@@ -152,8 +152,9 @@ public class Menu {
      */
     public static int isInt(int[] opciones){
         boolean entradaValida= false;
-        int opcion= 0;
+        int opcion=5;
         do {
+            
             if (sc.hasNextInt()) {
                 // Si es un número, lo leemos
                 opcion = sc.nextInt();
@@ -161,18 +162,21 @@ public class Menu {
                     if(i==opcion){
                         entradaValida = true;
                         break;
-                    }else{
+                    }else if(i==(opciones.length-1)&& i!=opcion){
+                        System.out.println("Introduzca la opcion");
                         entradaValida=false;
                     }
                 }
             } else {
                 // Si no es un número, mostramos error y limpiamos el buffer
-                entradaValida=false;
                 System.out.println("Entrada no válida. Por favor, introduzca un número.");
-                sc.next(); // Limpiamos la entrada incorrecta
+                break;
             }
-        } while (!entradaValida);
+            
+        } while(!entradaValida);
+        sc.nextLine();
         return opcion;
+        
         }
     }
 

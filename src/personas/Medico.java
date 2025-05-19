@@ -13,6 +13,11 @@ public class Medico extends Persona {
 
     //Constructores
     
+    public Medico(String nombre, String apellido, String especialidad,String dni, Hospital hospi) {
+        super(nombre, apellido,dni, hospi);
+        this.especialidad = especialidad;
+    }
+    
     public Medico(String nombre, String apellido, String especialidad, Hospital hospi) {
         super(nombre, apellido, hospi);
         this.especialidad = especialidad;

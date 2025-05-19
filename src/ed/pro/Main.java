@@ -22,7 +22,7 @@ public class Main {
      */
     
     static Hospital hospi= new Hospital();
-    static String ruta="src/prueba/hospital.dat";
+    static String ruta="src/ed/pro/hospital.dat";
     static File fichero= new File(ruta);
     
     
@@ -40,11 +40,9 @@ public class Main {
     **/
     public static void inicioPrograma(){
         if(fichero.exists()){
-            hospi=GestionBBDD.leerFichero(ruta);
+            hospi=GestionBBDD.leerFichero(fichero,hospi);
         }else{
             BBDD.datosBase(hospi);
-            GestionBBDD.aniadirFichero(hospi,ruta);
-            hospi=GestionBBDD.leerFichero(ruta);
         }
     }
     
@@ -52,6 +50,6 @@ public class Main {
      * El metodd carga el objeto en el fichero
      */
     public static void finPrograma(){
-        GestionBBDD.aniadirFichero(hospi,ruta);
+        GestionBBDD.aniadirFichero(hospi,fichero);
     }
 }

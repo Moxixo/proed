@@ -4,13 +4,14 @@
  */
 package data;
 
+import java.io.Serializable;
 import personas.Paciente;
 
 /**
  *
  * @author Carlos D.HD 
  */
-public class Cama {
+public class Cama implements Serializable{
     
     /*ATRIBUTOS*/
     protected Paciente paciente; //Paciente asignado a la cama

@@ -4,11 +4,13 @@
  */
 package data;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Marta Lou
  */
-public class MaterialMedico {
+public class MaterialMedico implements Serializable{
     protected String nombre;
     protected int cantidad;
     protected int usando;

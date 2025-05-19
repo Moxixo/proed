@@ -64,6 +64,7 @@ public class GestionMenu {
                     salir=true;
                     break;
             }
+            
         }while(!salir);
     }
     
@@ -73,19 +74,18 @@ public class GestionMenu {
                 do{
                     System.out.println("Introduzca el dni del paciente");
                     String dni=sc.nextLine();
-                    sc.next();
-                    if(hospi.obtenerPaciente(dni)!=null){  
+                    
+                    if(hospi.obtenerPaciente(dni)!=null){ 
                         enLista=true;
                         for(int i=0; i<hospi.getAreas().size();i++){
-                            for(int j=0; j>hospi.getAreas().get(i).getPacientes().size(); j++){
+                            for(int j=0; j<hospi.getAreas().get(i).getPacientes().size(); j++){
                                 if(hospi.getAreas().get(i).getPacientes().get(j).getDni().equalsIgnoreCase(dni)){
-                                    System.out.println("Ya se encuentra tendido en el hospital");
+                                    System.out.println("Ya se encuentra atendido en el hospital");
                                     System.out.println("Nombre: "+ hospi.getAreas().get(i).getPacientes().get(j).getNombre() +" "+ hospi.getAreas().get(i).getPacientes().get(j).getApellido() +"   DNI: " + hospi.getAreas().get(i).getPacientes().get(j).getDni() +"    Area: "+hospi.getAreas().get(i).getNombre());
                                         atendido=true;
-                                        break;
                                 }
                             }
-                        }
+                    }
                         if(!atendido){
                             hospi.obtenerPaciente(dni).registrarPaciente();
                             if(hospi.obtenerPaciente(dni).getCodigo().equalsIgnoreCase("rojo")){
@@ -104,17 +104,20 @@ public class GestionMenu {
                                         hospi.getAreas().get(i).asignarCamaDisponible(hospi.getAreas().get(i).getPacientes().getLast());
                                     }
                             }
+                            }else{
+                                hospi.getAreas().get(0).aniadirPaciente(hospi.obtenerPaciente(dni));   
                             }
+                        }else{
+                            System.out.println("No se realizan cambios");
+                            break;
                         }
                     }else{
                         System.out.println("No hay nadie con ese dni en nuestro sistema");
                         System.out.println("Introduzca los datos que se le requieran para aniadirlo a nuestro sistema");
                         System.out.println("Introduzca el nombre");
                         String nombre=sc.nextLine();
-                        sc.next();
                         System.out.println("Introduzca el apellido");
                         String apellido=sc.nextLine();
-                        sc.next();
                         Paciente p1=new Paciente(nombre,apellido,dni,hospi);
                         if(hospi.obtenerPaciente(p1.getDni())!=null){
                             enLista=true;
@@ -129,13 +132,16 @@ public class GestionMenu {
                                                   Trasladar automaticamente a box.
                                                   **Estaría sonando una alarma, pero no sabemos como implementarlo**
                                                   """);
-                                for(int i =0; i<hospi.getAreas().size();i++){
+                                for(int i =0; i>hospi.getAreas().size();i++){
                                     if(hospi.getAreas().get(i).getNombre().equalsIgnoreCase("Urgencias")){
                                         hospi.getAreas().get(i).aniadirPaciente(hospi.obtenerPaciente(p1.getDni()));
                                         hospi.getAreas().get(i).asignarCamaDisponible(hospi.getAreas().get(i).getPacientes().getLast());
                                     }
                             }
+                            }else{
+                                hospi.getAreas().get(0).aniadirPaciente(hospi.obtenerPaciente(p1.getDni()));   
                             }
+                            
                         }else{
                             System.out.println("Error no se aniadio");
                         }
@@ -148,10 +154,9 @@ public class GestionMenu {
             do{
                 System.out.println("Introduzca el dni del paciente");
                 String dni=sc.nextLine();
-                sc.next();
                 if(hospi.obtenerPaciente(dni)!=null){  
                     for(int i=0; i<hospi.getAreas().size();i++){
-                        for(int j=0; j>hospi.getAreas().get(i).getPacientes().size(); j++){
+                        for(int j=0; j<hospi.getAreas().get(i).getPacientes().size(); j++){
                             if(hospi.getAreas().get(i).getPacientes().get(j).getDni().equalsIgnoreCase(dni)){
                                 hospi.getAreas().get(i).getPacientes().remove(j);
                                 break;
@@ -162,19 +167,19 @@ public class GestionMenu {
                     do{
                     System.out.println("Introduzca el nombre de la nueva area");
                     String nuevaArea=sc.nextLine();
-                    sc.next();
                     for(int i = 0; i<hospi.getAreas().size();i++){
                         if(hospi.getAreas().get(i).getNombre().equalsIgnoreCase(nuevaArea)){
                             hospi.getAreas().get(i).aniadirPaciente(hospi.obtenerPaciente(dni));
                             plantaCorrecta=true;
                             enLista=true;
                             break;
-                        }else{
+                        }else if(!hospi.getAreas().get(i).getNombre().equalsIgnoreCase(nuevaArea)&&i==(hospi.getAreas().size()-1)){
                             System.out.println("Error nombre nueva planta");
                             plantaCorrecta=false;
-                            for(int j = 0; j<hospi.getAreas().size();j++){
+                            /*for(int j = 0; j<hospi.getAreas().size();j++){
+                                
                                 System.out.println(hospi.getAreas().get(i).getNombre());
-                            }
+                            }*/
                         }
                     }
                     }while(!plantaCorrecta);
@@ -417,7 +422,7 @@ public class GestionMenu {
             boolean salir= false;
             do{
                 Menu.actualizarDatosP();
-                int[] actDataP={0,1,2};//faltaria de implementar el 3
+                int[] actDataP={0,1,2,3};//faltaria de implementar el 3
                 int opcion=Menu.isInt(actDataP);
                 switch(opcion){
                     //Estado
@@ -430,10 +435,11 @@ public class GestionMenu {
                         actConstantes(hospi);
                         break;
 
-                    /*//Prioridad
+                    //Prioridad
                     case 3:
-                        actPrioridad(hospi);
-                        break;*/
+                        System.out.println("No esta implementado actualmente");
+                        //actPrioridad(hospi);
+                        break;
 
                     //Volver
                     case 0:
@@ -521,7 +527,7 @@ public class GestionMenu {
             String dni1=sc.nextLine();
             if(hospi.obtenerPaciente(dni1)!=null){
                 enLista=true;
-                hospi.obtenerPaciente(dni1).getHistorial().aniadirEnfermedad();
+                hospi.obtenerPaciente(dni1).getHistorial().aniadirAlergia();
             }else{
                 System.out.println("Asegurese de que el dni sea correcto");
             }
@@ -555,18 +561,44 @@ public class GestionMenu {
     }
     
             private static void aniadirSin(Hospital hospi){
-        boolean enLista= false;
+        boolean enLista=false;
         do{
             System.out.println("Introduzca el dni del paciente");
             String dni1=sc.nextLine();
-            if(hospi.obtenerPaciente(dni1)!=null){
-                enLista=true;
-                int idInforme=hospi.obtenerPaciente(dni1).getHistorial().obtenerIdInforme();
-                hospi.obtenerPaciente(dni1).getHistorial().getAntecedentes().get(idInforme).aniadirSintoma();
-            }else{
-                System.out.println("Asegurese de que el dni sea correcto");
-            }
-        }while(!enLista);
+                if(hospi.obtenerPaciente(dni1)!=null){
+                    enLista=true;
+                    int idInforme=hospi.obtenerPaciente(dni1).getHistorial().obtenerIdInforme();
+                    boolean salir=false;
+                    
+                do{
+                    
+                System.out.println("Introduce el id del Informe a modificar");
+                int id=sc.nextInt();
+                
+                for(int i=0; i<hospi.obtenerPaciente(dni1).getHistorial().getAntecedentes().size();i++){
+                    if(id==hospi.obtenerPaciente(dni1).getHistorial().getAntecedentes().get(i).getId()){
+                    System.out.println("Introduzca el sintoma");
+                    sc.nextLine();
+                    String sintom=sc.nextLine();
+                    hospi.obtenerPaciente(dni1).getHistorial().getAntecedentes().get(id).getSintomas().add(sintom);
+                    System.out.println("sintoma aniadido");
+                salir=true;
+                break;
+                    }else if(i==(hospi.obtenerPaciente(dni1).getHistorial().getAntecedentes().size()-1) && id!=hospi.obtenerPaciente(dni1).getHistorial().getAntecedentes().get(i).getId()){
+                        System.out.println("No encontrado");
+                        salir=false;
+                        break;
+                    }
+                    else{
+                        salir=false;
+                    }
+                }
+                    }while(!salir);
+                    
+                }else{
+                    System.out.println("Asegurese de que el dni sea correcto");
+                }
+        }while(!enLista);                          
     }
     
             private static void aniadirProd(Hospital hospi){
@@ -577,7 +609,33 @@ public class GestionMenu {
                 if(hospi.obtenerPaciente(dni1)!=null){
                     enLista=true;
                     int idInforme=hospi.obtenerPaciente(dni1).getHistorial().obtenerIdInforme();
-                    hospi.obtenerPaciente(dni1).getHistorial().getAntecedentes().get(idInforme).aniadirProcedimiento();
+                    boolean salir=false;
+                    
+                do{
+                    
+                System.out.println("Introduce el id del Informe a modificar");
+                int id=sc.nextInt();
+                
+                for(int i=0; i<hospi.obtenerPaciente(dni1).getHistorial().getAntecedentes().size();i++){
+                    if(id==hospi.obtenerPaciente(dni1).getHistorial().getAntecedentes().get(i).getId()){
+                    System.out.println("Introduzca el procedimiento");
+                    sc.nextLine();
+                    String sintom=sc.nextLine();
+                    hospi.obtenerPaciente(dni1).getHistorial().getAntecedentes().get(id).getProcedimientos().add(sintom);
+                    System.out.println("Procedimiento aniadido");
+                salir=true;
+                break;
+                    }else if(i==(hospi.obtenerPaciente(dni1).getHistorial().getAntecedentes().size()-1) && id!=hospi.obtenerPaciente(dni1).getHistorial().getAntecedentes().get(i).getId()){
+                        System.out.println("No encontrado");
+                        salir=false;
+                        break;
+                    }
+                    else{
+                        salir=false;
+                    }
+                }
+                    }while(!salir);
+                    
                 }else{
                     System.out.println("Asegurese de que el dni sea correcto");
                 }

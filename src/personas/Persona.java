@@ -80,7 +80,6 @@ public abstract class Persona implements Serializable {
             do{
                 System.out.println("El dni es incorrecto porfavor introduzca un id correcto como seria: '000A'");
                 String newDni=sc.nextLine();
-                sc.next();
                 if(newDni != null && newDni.matches(regex)){
                     correcto=true;
                     return dniCorrect=newDni;
